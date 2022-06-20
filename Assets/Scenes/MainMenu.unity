@@ -2040,7 +2040,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelNumber: 1
-  _shop: {fileID: 0}
+  _shop: {fileID: 972049473}
 --- !u!1 &2059236118
 GameObject:
   m_ObjectHideFlags: 0

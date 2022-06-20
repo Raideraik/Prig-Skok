@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -13,25 +14,41 @@ public class ItemView : MonoBehaviour
     [SerializeField] private Image _icon;
     [SerializeField] private Button _sellButton;
 
+
+    [SerializeField] private string _saveName;
     private CustomBall _ball;
 
-    public event UnityAction<CustomBall, ItemView> SellButtonClick; 
+    public event UnityAction<CustomBall, ItemView> SellButtonClick;
+
 
     private void OnEnable()
     {
         _sellButton.onClick.AddListener(OnButtonClick);
+        _sellButton.onClick.AddListener(Buyed);
+
     }
 
     private void OnDisable()
     {
         _sellButton.onClick.RemoveListener(OnButtonClick);
+        _sellButton.onClick.RemoveListener(Buyed);
+
     }
 
+    private void Buyed() 
+    {
+        if (_ball.IsBuyed)
+        {
+            _price.text = "Куплено";
+        }
+    }
 
 
     public void Render(CustomBall customBall)
     {
         _ball = customBall;
+
+        customBall.Starter();
 
         _label.text = customBall.Label;
         if (_ball.IsBuyed)

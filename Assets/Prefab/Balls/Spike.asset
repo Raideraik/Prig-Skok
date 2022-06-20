@@ -18,3 +18,4 @@ MonoBehaviour:
   _isBuyed: 0
   _ball: {fileID: 919132149155446097, guid: 83180f893877c5c4e856ea19268c3ee6, type: 3}
   _id: 2
+  _saveName: Spike

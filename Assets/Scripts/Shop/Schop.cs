@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -10,13 +11,15 @@ public class Schop : MonoBehaviour
     [SerializeField] private GameObject _itemContainer;
     [SerializeField] private TMP_Text _scoreText;
 
-    private int _score;
+    private bool far;
+
+    [SerializeField]private int _score;
 
     private void Start()
     {
         _score = PlayerPrefs.GetInt("Score");
         _scoreText.text = _score.ToString();
-
+        
 
         for (int i = 0; i < _items.Count; i++)
         {
@@ -24,12 +27,14 @@ public class Schop : MonoBehaviour
         }
     }
 
-    private void AddItem(CustomBall gameObject) 
+    private void AddItem(CustomBall ball) 
     {
         var view = Instantiate(_template, _itemContainer.transform);
         view.SellButtonClick += OnSellButtonClick;
-        view.Render(gameObject);
+        view.Render(ball);
+
     }
+
 
     private void OnSellButtonClick(CustomBall ball, ItemView view) 
     {
@@ -46,6 +51,8 @@ public class Schop : MonoBehaviour
                 _scoreText.text = _score.ToString();
                 PlayerPrefs.SetInt("Score", _score);
                 ball.Buy();
+                PlayerPrefs.SetInt("ChoosedBall", ball.Id);
+                PlayerPrefs.SetInt(ball.SaveName, Convert.ToInt32(true));
                 view.SellButtonClick -= OnSellButtonClick;
             }
         }
