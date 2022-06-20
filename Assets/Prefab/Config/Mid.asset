@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: Mid
   m_EditorClassIdentifier: 
   _towerSize: 50
+  _segment: {fileID: -7056063978826518311, guid: 1ddbfcd36d98b6c4fbb4daaeaf257281,
+    type: 3}

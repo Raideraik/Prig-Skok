@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: Hard
   m_EditorClassIdentifier: 
   _towerSize: 100
+  _segment: {fileID: -7056063978826518311, guid: dfd79a6ad051939478fb1ce3484b6f25,
+    type: 3}

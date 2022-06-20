@@ -14,26 +14,35 @@ public class Ball : MonoBehaviour
     [SerializeField] private UiVisualise _visual;
     [SerializeField] private ClickZone _clickZone;
 
+
+
+
     public float JumpForce { get; private set; }
+    public bool Started { get; private set; }
+    public int Score { get; private set; }
+    public int Id { get; private set; }
+
+
     private LineRenderer _line;
     private Rigidbody _rigidbody;
     private bool _isReady = true;
-    private bool _doOnce = false;
-    private bool _started = false;
-    public bool Started => _started;
 
     public event UnityAction Finished;
+    public event UnityAction ScoreChanged;
+
 
     [Header("Color of Line")]
-    [SerializeField]private Color _block;
-    [SerializeField]private Color _segment;
-    [SerializeField]private Color _finish;
+    [SerializeField] private Color _block;
+    [SerializeField] private Color _segment;
+    [SerializeField] private Color _finish;
 
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
         _line = GetComponentInChildren<LineRenderer>();
         Time.timeScale = 1;
+
+        
     }
 
     public void TouchDown()
@@ -49,6 +58,7 @@ public class Ball : MonoBehaviour
             else if (hitInfo.collider.TryGetComponent(out Segment segment))
             {
                 _line.SetColors(_segment, _segment);
+                AddScore(segment.GivePoints());
                 _rigidbody.isKinematic = true;
                 _rigidbody.velocity = Vector3.zero;
                 _line.gameObject.SetActive(true);
@@ -59,11 +69,6 @@ public class Ball : MonoBehaviour
             {
                 _line.SetColors(_finish, _finish);
                 _line.gameObject.SetActive(true);
-                /* if (!_doOnce)
-                 {
-                     _visual.ShowFinish();
-                     _doOnce = true;
-                 }*/
 
                 Finished?.Invoke();
 
@@ -72,7 +77,15 @@ public class Ball : MonoBehaviour
         }
     }
 
-    public void TouchUp() 
+    public void AddScore(int points) 
+    {
+        Score = PlayerPrefs.GetInt("Score");
+        Score += points;
+        ScoreChanged?.Invoke();
+        PlayerPrefs.SetInt("Score", Score);
+    }
+
+    public void TouchUp()
     {
         if (_isReady)
         {
@@ -88,36 +101,22 @@ public class Ball : MonoBehaviour
 
     private void Update()
     {
-        
-
-        
         if (Input.GetMouseButton(0))
         {
-            _started = true;
-           if (_isReady)
-        {
-            Ray ray = new Ray(transform.position, Vector3.forward);
-            if (Physics.Raycast(ray, out RaycastHit hitInfo))
+            Started = true;
+            if (_isReady)
             {
-                if (hitInfo.collider.TryGetComponent(out Segment segment))
+                Ray ray = new Ray(transform.position, Vector3.forward);
+                if (Physics.Raycast(ray, out RaycastHit hitInfo))
                 {
-                    _timeOfFilling += Time.deltaTime * _speedOfFilling;
-                    JumpForce = Mathf.PingPong(_timeOfFilling, _maxForce);
+                    if (hitInfo.collider.TryGetComponent(out Segment segment))
+                    {
+                        _timeOfFilling += Time.deltaTime * _speedOfFilling;
+                        JumpForce = Mathf.PingPong(_timeOfFilling, _maxForce);
+                    }
                 }
             }
-        }
 
         }
-        /*
-        if (Input.GetMouseButtonDown(0))
-        {
-            
-        }*/
-
-        /*
-        if (Input.GetMouseButtonUp(0))
-        {
-            
-        }*/
     }
 }

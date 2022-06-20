@@ -8,7 +8,8 @@ public class ClickZone : MonoBehaviour, IPointerClickHandler , IPointerDownHandl
 {
     public event UnityAction Click;
 
-    [SerializeField] private Ball _ball;
+   [SerializeField] private Ball _ball;
+
 
     public void OnPointerClick(PointerEventData eventData)
     {

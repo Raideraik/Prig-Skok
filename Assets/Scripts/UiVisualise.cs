@@ -7,6 +7,7 @@ using UnityEngine.Events;
 
 public class UiVisualise : MonoBehaviour
 {
+    [SerializeField] private TMP_Text _score;
     [SerializeField] private TMP_Text _finishMessage;
     [SerializeField] private TMP_Text _timerText;
     [SerializeField] private TMP_Text _bestTimeNumber;
@@ -14,17 +15,12 @@ public class UiVisualise : MonoBehaviour
     [SerializeField] private float _timer;
     [SerializeField] private Ball _ball;
 
-    [SerializeField] private bool check;
-
     private int _time;
     private void Start()
     {
-        if (check)
-        {
-            PlayerPrefs.SetInt("BestTime", 0);
-        }
         _bestTimeNumber.text = PlayerPrefs.GetInt("BestTime").ToString();
         _timerText.text = _timer.ToString();
+
     }
 
     private void Update()
@@ -38,11 +34,19 @@ public class UiVisualise : MonoBehaviour
     private void OnEnable()
     {
         _ball.Finished += ShowFinish;
+        _ball.ScoreChanged += OnScoreChanged;
     }
 
     private void OnDisable()
     {
         _ball.Finished -= ShowFinish;
+        _ball.ScoreChanged -= OnScoreChanged;
+
+    }
+
+    private void OnScoreChanged() 
+    {
+        _score.text = _ball.Score.ToString();
     }
 
     public void CountTime()
@@ -63,6 +67,7 @@ public class UiVisualise : MonoBehaviour
 
  
     }
+
 
     public void ShowForce(float ForceOfSlider)
     {

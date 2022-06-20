@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: Light
   m_EditorClassIdentifier: 
   _towerSize: 20
+  _segment: {fileID: -7056063978826518311, guid: 492c511044c441e4698439068652296e,
+    type: 3}

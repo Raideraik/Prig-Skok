@@ -42,5 +42,6 @@ public class Spawner : MonoBehaviour, ISceneLoadHandler<LevelConfiguration>
     public void OnSceneLoaded(LevelConfiguration argument)
     {
         _towerSize = argument.TowerSize;
+        _segmentTemplate = argument.Segment;
     }
 }
