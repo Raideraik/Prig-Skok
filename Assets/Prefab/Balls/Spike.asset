@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _label: "\u041A\u043E\u043B\u044E\u0447\u043A\u0430"
   _price: 500
-  _icon: {fileID: 21300000, guid: 8048b35141780344b887b524854b27a2, type: 3}
-  _isBuyed: 0
+  _icon: {fileID: 21300000, guid: 832f453454019754a8661913ddc13360, type: 3}
+  _isBuyed: 1
   _ball: {fileID: 919132149155446097, guid: 83180f893877c5c4e856ea19268c3ee6, type: 3}
-  _id: 2
+  _id: 3
   _saveName: Spike

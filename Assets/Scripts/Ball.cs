@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(AudioSource))]
 public class Ball : MonoBehaviour
 {
     [SerializeField] private float _maxForce;
@@ -22,7 +23,7 @@ public class Ball : MonoBehaviour
     public int Score { get; private set; }
     public int Id { get; private set; }
 
-
+    private AudioSource _audioSource;
     private LineRenderer _line;
     private Rigidbody _rigidbody;
     private bool _isReady = true;
@@ -40,8 +41,11 @@ public class Ball : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody>();
         _line = GetComponentInChildren<LineRenderer>();
+        _audioSource = GetComponent<AudioSource>();
         Time.timeScale = 1;
 
+        _audioSource.loop = false;
+        _audioSource.playOnAwake = false;
         
     }
 
@@ -77,6 +81,11 @@ public class Ball : MonoBehaviour
         }
     }
 
+    public void AddSound(AudioClip audio) 
+    {
+        _audioSource.clip = audio;
+    }
+
     public void AddScore(int points) 
     {
         Score = PlayerPrefs.GetInt("Score");
@@ -89,6 +98,7 @@ public class Ball : MonoBehaviour
     {
         if (_isReady)
         {
+            _audioSource.Play();
             _timeOfFilling = 0.0f;
             _rigidbody.isKinematic = false;
             _rigidbody.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);

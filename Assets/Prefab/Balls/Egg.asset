@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 062f21202a0a90142ae606391f2f3f7a, type: 3}
+  m_Name: Egg
+  m_EditorClassIdentifier: 
+  _label: "\u042F\u0439\u0446\u043E"
+  _price: 5000
+  _icon: {fileID: 21300000, guid: 0d6bdeab4031c4c41a3edfb93bb7b707, type: 3}
+  _isBuyed: 1
+  _ball: {fileID: 919132149155446097, guid: 7f43327d3dce73541b30c631f6bcb148, type: 3}
+  _id: 7
+  _saveName: Egg

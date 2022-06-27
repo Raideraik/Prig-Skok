@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 062f21202a0a90142ae606391f2f3f7a, type: 3}
+  m_Name: Watermellon
+  m_EditorClassIdentifier: 
+  _label: "\u0410\u0440\u0431\u0443\u0437"
+  _price: 1000
+  _icon: {fileID: 21300000, guid: 30de8169c02af4b4d961d896a0a54bd0, type: 3}
+  _isBuyed: 1
+  _ball: {fileID: 919132149155446097, guid: 8ce6512915e30114f9dc13cfb418dcb2, type: 3}
+  _id: 4
+  _saveName: WaterMellon
