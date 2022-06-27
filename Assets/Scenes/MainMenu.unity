@@ -1357,11 +1357,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: aea9b0cd5485ecb479c22ac79e979af3, type: 2}
   - {fileID: 11400000, guid: 87905d9cb09646f41bb24dc0c3f3b6f5, type: 2}
   - {fileID: 11400000, guid: cccd19ad0f807ca4a9a52d9df589a547, type: 2}
+  - {fileID: 11400000, guid: e5a37e70cc3097641a7c920060b5cf49, type: 2}
   _template: {fileID: -4767543019199250736, guid: e1a9c793a52c1e94eb73064bc136f446,
     type: 3}
   _itemContainer: {fileID: 1954227433}
   _scoreText: {fileID: 228255640}
-  _score: 0
+  _score: 1000000
 --- !u!1 &1062523435
 GameObject:
   m_ObjectHideFlags: 0
